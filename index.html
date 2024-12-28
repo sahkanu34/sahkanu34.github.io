@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --text-color: #ecf0f1;
+            --border-color: rgba(236, 240, 241, 0.3);
+            --sidebar-width: 240px;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            min-height: 100vh;
+            color: var(--text-color);
+        }
+        
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--primary-color);
+            min-height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding: 20px;
+            z-index: 1000;
+            border-right: 1px solid var(--border-color);
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 40px;
+            min-height: 100vh;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 20px auto;
+            display: block;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            padding: 3px;
+        }
+        
+        .nav-link {
+            color: var(--text-color);
+            padding: 8px 15px;
+            margin: 5px 0;
+            transition: all 0.3s;
+            border-radius: 5px;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .nav-link i {
+            width: 25px;
+        }
+        
+        .social-icons a {
+            color: var(--accent-color);
+            margin: 0 10px;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--text-color);
+        }
+        
+        .btn-custom {
+            padding: 8px 25px;
+            margin: 10px 5px;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            margin-bottom: 60px;
+            scroll-margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item {
+            border-left: 2px solid var(--accent-color);
+            padding-left: 20px;
+            margin-bottom: 30px;
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 0 15px 15px 0;
+            padding: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            position: absolute;
+            left: -7px;
+            top: 24px;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-color: var(--accent-color);
+        }
+
+        .badge {
+            background-color: var(--accent-color) !important;
+            color: white !important;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 0 5px 5px 0;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 12px;
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent-color);
+            color: var(--text-color);
+            box-shadow: none;
+        }
+
+        .form-label {
+            color: var(--text-color);
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: static;
+                min-height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 15px;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .section {
+                padding: 20px;
+                margin-bottom: 30px;
+            }
+
+            .project-card {
+                margin-bottom: 15px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-color);
+        }
+         /* Animations */
+         @keyframes slideInLeft {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Apply animations to elements */
+        .profile-img {
+            animation: pulse 2s infinite;
+        }
+
+        .nav-link {
+            animation: slideInLeft 0.5s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .nav-link:nth-child(1) { animation-delay: 0.1s; }
+        .nav-link:nth-child(2) { animation-delay: 0.2s; }
+        .nav-link:nth-child(3) { animation-delay: 0.3s; }
+        .nav-link:nth-child(4) { animation-delay: 0.4s; }
+        .nav-link:nth-child(5) { animation-delay: 0.5s; }
+        .nav-link:nth-child(6) { animation-delay: 0.6s; }
+        .nav-link:nth-child(7) { animation-delay: 0.7s; }
+        .nav-link:nth-child(8) { animation-delay: 0.8s; }
+
+        .social-icons a {
+            animation: fadeIn 0.5s ease-out;
+            animation-fill-mode: both;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            animation: rotate 0.5s ease-out;
+        }
+
+        .btn-custom {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            animation: fadeIn 1s ease-out;
+            animation-fill-mode: both;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .timeline-item {
+            animation: slideInRight 0.5s ease-out;
+            animation-fill-mode: both;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-item {
+            animation: fadeIn 0.5s ease-out;
+            animation-fill-mode: both;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .project-card {
+            animation: fadeIn 0.5s ease-out;
+            animation-fill-mode: both;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .badge {
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            transform: scale(1.1);
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* <!-- Add this CSS to your existing styles --> */
+
+
+/* Update these styles in your existing CSS */
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    max-width: 400px; /* Added max-width */
+    margin: 0 auto; /* Center the card */
+}
+
+.project-image {
+    position: relative;
+    width: 100%;
+    height: 160px; /* Reduced height */
+    overflow: hidden;
+}
+
+.project-content {
+    padding: 15px; /* Reduced padding */
+}
+
+.project-content h4 {
+    font-size: 1.1rem; /* Smaller heading */
+    margin-bottom: 8px;
+}
+
+.project-content p {
+    font-size: 0.9rem; /* Smaller text */
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.project-technologies {
+    margin: 10px 0;
+}
+
+.badge {
+    font-size: 0.75rem; /* Smaller badges */
+    padding: 5px 10px;
+}
+
+.btn-project {
+    padding: 5px 15px; /* Smaller buttons */
+    font-size: 0.85rem;
+}
+
+/* Update the grid layout */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 0 10px;
+}
+</style>
+    
+</head>
+<!-- [Rest of the HTML remains the same as in the previous version] -->
+<body>
+    <div class="sidebar">
+        <img src="surajjpg.jpg" alt="Profile" class="profile-img">
+        <nav class="nav flex-column mt-4">
+            <a class="nav-link" href="#about"><i class="fas fa-user"></i> About</a>
+            <!-- <a class="nav-link" href="#experience"><i class="fas fa-briefcase"></i> Experience</a> -->
+            <a class="nav-link" href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
+            <a class="nav-link" href="#skills"><i class="fas fa-chart-bar"></i> Skills</a>
+            <a class="nav-link" href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
+            <a class="nav-link" href="#publications"><i class="fas fa-newspaper"></i> Publications</a>
+            <a class="nav-link" href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            <a class="nav-link" href="#resume"><i class="fas fa-file"></i> Resume</a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="section">
+            <div class="container-fluid">
+                <h1 class="display-4 mb-4">Hi, I'm Suraj Sah Kanu.</h1>
+                <h3 class="text-light mb-3">Data Science and AI Enthusiast</h3>
+                <p class="lead mb-4">A self-motivated and passionate programmer, thrives on tackling intricate real-world challenges contributing to impactful projects.</p>
+                
+                <div class="social-icons mb-4">
+                    <a href="https://linkedin.com/in/sahkanu34" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/sahkanu34" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-medium"></i></a>
+                </div>
+                
+                <div class="buttons">
+                    <a href="#about" class="btn btn-light btn-custom">Read More</a>
+                    <a href="#contact" class="btn btn-outline-light btn-custom">Contact Me</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <h2 class="mb-4">About Me</h2>
+            <p class="lead">🚀 Passionate Machine Learning Engineer with a strong foundation in Computer Science.<br>
+                🎓 Recently graduating with a Bachelor's in Computer Application from Tribhuvan University,I'm now channeling my knowledge and  expertise at my projects, where I play an integral role in developing cutting-edge machine learning solutions.<br>
+                📖 When I'm not working on ML projects, you can often find me immersed in writing insightful articles on AI-related topics..</p>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h4></h4>
+                    <ul>
+                        <li>Languages: Python, C, Java</li>
+                        <li>Libraries: Numpy, Pandas, matlpotlib, seaborn, scikit-learn</li>
+                        <li>Frameworks: django, flask, bootstrap</li>
+                        <li>Tools: git, GitHub, conda</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+        
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section
+        <section id="experience" class="section">
+            <h2 class="mb-4">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Job Title</h4>
+                    <h5>Company Name</h5>
+                    <p class="text-light">Month Year - Present</p>
+                    <ul>
+                        <li>Key responsibility or achievement 1</li>
+                        <li>Key responsibility or achievement 2</li>
+                        <li>Key responsibility or achievement 3</li>
+                    </ul>
+                </div>
+                <! Add more timeline-item divs for additional experiences -->
+            <!-- </div>
+        </section>  -->
+
+        <!-- Updated Projects Section with Grid -->
+<section id="projects" class="section">
+    <h2 class="mb-4">Projects</h2>
+    <div class="projects-grid">
+        <!-- Project Card 1 -->
+        <div class="project-card">
+            <div style="width: 100%; max-width: 800px; margin: auto; position: relative; overflow: hidden; border-radius: 8px;">
+                <img 
+                    src="raktasetu.png" 
+                    alt="Blood Bank Project" 
+                    style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border: 2px solid #ddd; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);"
+                />
+            </div>
+            <div class="project-content">
+                <h4>Blood Bank & Donor Management System</h4>
+                <p>Developed a Django-based online web application where users can create profiles
+                    join a community, and request blood <br>
+                    Implemented admin functionalities for managing donor profiles, blood requests, and blood groups 
+                    .</p>
+                <div class="project-technologies">
+                    <span class="badge bg-light text-dark me-2">Django</span>
+                    <span class="badge bg-light text-dark me-2">Bootstrap</span>
+                    <span class="badge bg-light text-dark me-2">MySQL</span>
+                </div>
+                <div class="project-links">
+                    <!-- <a href="#" class="btn btn-project">
+                        <i class="fas fa-external-link-alt me-2"></i>View
+                    </a> -->
+                    <a href="https://github.com/sahkanu34/Raktasetu" class="btn btn-project">
+                        <i class="fab fa-github me-2"></i>View Project
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Card 2 -->
+        <div class="project-card">
+            <div style="width: 100%; max-width: 800px; margin: auto; position: relative; overflow: hidden; border-radius: 8px;">
+                <img 
+                    src="sal.png" 
+                    alt="Salary Prediction Project" 
+                    style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border: 2px solid #ddd; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);"
+                />
+            </div>
+            <div class="project-content">
+                <h4>Salary Prediction </h4>
+                <p>Created a machine learning model to predict employee salaries based on features such
+                    as experience, education, and location.<br>
+                    Utilized Python and libraries such as Pandas, NumPy, and Scikit-learn for data pre-processing and model building. 
+                </p>
+                <div class="project-technologies">
+                    <span class="badge bg-light text-dark me-2">Python</span>
+                    <span class="badge bg-light text-dark me-2">Streamlit</span>
+                    <span class="badge bg-light text-dark me-2">Docker</span>
+                    <span class="badge bg-light text-dark me-2">Pandas</span>
+                    <span class="badge bg-light text-dark me-2">Plotly</span>
+                </div>
+                <div class="project-links">
+                    <!-- <a href="#" class="btn btn-project">
+                        <i class="fas fa-external-link-alt me-2"></i>View
+                    </a> -->
+                    <a href="https://github.com/sahkanu34/salary_prediction_app" class="btn btn-project">
+                        <i class="fab fa-github me-2"></i>View Project
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Card 3 -->
+        <div class="project-card">
+            <div style="width: 100%; max-width: 800px; margin: auto; position: relative; overflow: hidden; border-radius: 8px;">
+                <img 
+                    src="image.png" 
+                    alt="iris app" 
+                    style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border: 2px solid #ddd; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);"
+                />
+            </div>
+            <div class="project-content">
+                <h4>Iris Flower Classification</h4>
+                <p>Built a machine learning classification model to identify Iris flower species
+                    (Setosa, Versicolor, Virginica) using the famous Iris dataset.<br>
+                    Employed algorithms such as Logistic Regression and K-Nearest Neighbors (KNN). 
+                </p>
+                <div class="project-technologies">
+                    <span class="badge bg-light text-dark me-2">Python</span>
+                    <span class="badge bg-light text-dark me-2">Streamlit</span>
+                    <span class="badge bg-light text-dark me-2">Pandas</span>
+                    <span class="badge bg-light text-dark me-2">NumPy</span>
+                    <span class="badge bg-light text-dark me-2">matlpotlib</span>
+                    <span class="badge bg-light text-dark me-2">seaborn</span>
+                    <span class="badge bg-light text-dark me-2">docker</span>
+                </div>
+                <div class="project-links">
+                    <!-- <a href="#" class="btn btn-project">
+                        <i class="fas fa-external-link-alt me-2"></i>View
+                    </a> -->
+                    <a href="https://github.com/sahkanu34/irisapp" class="btn btn-project">
+                        <i class="fab fa-github me-2"></i>View Project
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add more projects here  -->
+    </div>
+</section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <h2 class="mb-4">Skills</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Technical Skills</h4>
+                    <div class="skill-item">
+                        <h5>Programming Languages & Databases </h5>
+                        <p>
+                            <img src="https://icon.icepanel.io/Technology/svg/Python.svg" alt="python" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/svg/C.svg" alt="C" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/svg/Java.svg" alt="Java" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/png-shadow-512/Bash.png" alt="bash" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/svg/MySQL.svg" alt="Mysql" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/svg/PostgresSQL.svg" alt="PostgresSQL" style="width: 90px; height: 40px; margin-right: 10px;">
+                        </p>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <h5>Frameworks & Libraries</h5>
+                        <p>
+                            <img src="https://icon.icepanel.io/Technology/png-shadow-512/Django.png" alt="django" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/png-shadow-512/Flask.png" alt="flask" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/svg/Bootstrap.svg" alt="bootstrap" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/svg/NumPy.svg" alt="numpy" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/png-shadow-512/Pandas.png" alt="pandas" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/svg/Matplotlib.svg" alt="matlpotlib" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/svg/scikit-learn.svg" alt="sklearn" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/svg/TensorFlow.svg" alt="TensorFlow" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/svg/Keras.svg" alt="keras" style="width: 50px; height: 50px; margin-right: 10px;">
+                        </p>
+                    </div>
+                    <div class="skill-item" >
+                        <h5>Tools & Technologies</h5>
+                        <p>
+                            <img src="https://icon.icepanel.io/Technology/svg/Git.svg" alt="git" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/png-shadow-512/GitHub-Codespaces.png" alt="github" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/svg/Anaconda.svg" alt="" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/svg/PyCharm.svg" alt="" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/svg/Docker.svg" alt="Docker" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/svg/Kubernetes.svg" alt="K8's" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/svg/Jenkins.svg" alt="" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/png-shadow-512/AWS.png" alt="aws" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/svg/Streamlit.svg" alt="streamlit" style="width: 50px; height: 50px; margin-right: 10px;">
+                            <img src="https://icon.icepanel.io/Technology/png-shadow-512/Jupyter.png" alt="Jupyter" style="width: 50px; height: 50px; margin-right: 10px;">
+
+                        </p>
+                    </div>
+                    <!-- <div class="skill-item">
+                        <h5>Data Tools</h5>
+                        <p>
+                            <img src="" alt="" style="width: 50px; height: 50px; margin-right: 10px;">
+                        </p>
+                    </div> -->
+        </section>
+
+        <section id="education" class="section" style="display: flex; align-items: center; gap: 20px;">
+            <!-- Left content -->
+            <div style="flex: 1;">
+                <h2 class="mb-4">Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>Bachelor in Computer Application</h4>
+                        <h5>National Infotech College, Tribhuvan University</h5>
+                        <p class="text-light">2022 - Present</p>
+                        <p class="text-light">Grade - 81% (current)</p>
+                        <h6>Relevant Courseworks:</h6>
+                        <ul>
+                            <li>Programming and Data Structures</li>
+                            <li>Database Management System</li>
+                            <li>Software Engineering</li>
+                            <li>Operating System</li>
+                            <li>Cloud Computing</li>
+                            <li>Microprocessor and Computer Architecture</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Right content (Image and link) -->
+            <div style="flex: 1; text-align: center;">
+                <a href="https://nationalinfotechcollege.edu.np/" target="_blank" style="text-decoration: none;">
+                    <img 
+                        src="nilogo.png" 
+                        alt="National Infotech College" 
+                        style="width: 100%; max-width: 400px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);"
+                    />
+                    <p style="margin-top: 10px; font-weight: bold; color: #007BFF;">Visit National Infotech College</p>
+                </a>
+            </div>
+        </section>
+        
+
+        <!-- Publications Section -->
+        <section id="publications" class="section">
+            <h2 class="mb-4">Publications</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Currently working on it</h4>
+                    <p class="text-light">Stay tune for the updates</p>
+                    <!-- <p>There is currently no publications right at the moment</p> -->
+                    <!-- <a href="#" class="btn btn-sm btn-outline-light">Read More</a> -->
+                </div>
+                <!-- Add more timeline-item divs for additional publications -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2 class="mb-4">Contact</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-light">Send Message</button>
+                    </form> -->
+                <!-- </div> -->
+                <div class="col-md-6">
+                    <h4>Contact Information</h4>
+                    <p><i class="fas fa-envelope me-2"></i>surajsah132@gmail.com</p>
+                    <p><i class="fas fa-phone me-2"></i>+977-9815271537</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>Kathmandu, Nepal</p>
+                    <div class="social-icons mt-4">
+                        <a href="https://linkedin.com/in/sahkanu34" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/sahkanu34" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-medium"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume" class="section">
+            <h2 class="mb-4">Resume</h2>
+            <p>Download my resume to learn more about my experience and skills.</p>
+            <a href="https://ugc.production.linktr.ee/dfeb9271-1774-4c37-ae40-7ff9632b0969_updated-new-cv.pdf" class="btn btn-light btn-custom">
+                <i class="fas fa-download me-2"></i>Download Resume (PDF)
+            </a>
+        </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add active class to current navigation item
+        const navlinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+    <script>
+        // Previous JavaScript remains the same, then add:
+
+        // Scroll reveal animation
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            
+            reveals.forEach(element => {
+                var windowHeight = window.innerHeight;
+                var elementTop = element.getBoundingClientRect().top;
+                var elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', reveal);
+
+        // Add reveal class to all sections on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('reveal');
+            });
+            reveal(); // Initial check for visible elements
+        });
+
+        // Smooth hover effect for navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('mouseenter', function(e) {
+                this.style.transform = 'translateX(10px)';
+            });
+            
+            link.addEventListener('mouseleave', function(e) {
+                this.style.transform = 'translateX(0)';
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>
