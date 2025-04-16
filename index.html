@@ -754,32 +754,42 @@
                 <p class="lead mb-4 animate-fade-left delay-3">A self-motivated and passionate programmer, thrives on tackling intricate real-world challenges contributing to impactful projects.</p>
                 
                 <div class="buttons animate-fade-up delay-4">
-                    <a href="#about" class="btn btn-primary-custom">Read More</a>
-                    <a href="#contact" class="btn btn-outline-custom">Contact Me</a>
+                    <a href="#about" class="btn btn-primary-custom"><i class="fas fa-info-circle me-2"></i> Read More</a>
+                    <a href="#contact" class="btn btn-outline-custom"><i class="fas fa-envelope me-2"></i> Contact Me</a>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="section animate-fade-up">
-            <h2 class="mb-4">About Me</h2>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p class="lead">🚀 Passionate Machine Learning Engineer with a strong foundation in Computer Science.</p>
-                    <p>🎓 Recently graduating with a Bachelor's in Computer Application from Tribhuvan University, I'm now channeling my knowledge and expertise at my projects, where I play an integral role in developing cutting-edge machine learning solutions.</p>
-                    <p>📖 When I'm not working on ML projects, you can often find me immersed in writing insightful articles on AI-related topics.</p>
-                </div>
-            </div>
+       <!-- About Section -->
+<section id="about" class="section animate-fade-up">
+    <h2 class="mb-4">About Me</h2>
+    <div class="row">
+        <div class="col-lg-12">
+            <p class="lead">👋 I'm an aspiring <strong>Machine Learning Engineer</strong> with a strong academic background in <strong>Computer Applications</strong> and a passion for building intelligent systems that solve real-world problems.</p>
+            
+            <p>🔍 Over the past year, I've worked on a range of self-driven projects involving <strong>machine learning, NLP, data analytics</strong>, and <strong>web app development</strong>, blending my technical skills with creativity and business insight.</p>
+            
+            <p>💻 I specialize in Python and tools like <strong>Scikit-learn, Pandas, MySQL</strong>, and <strong>MLflow</strong>, and I enjoy designing end-to-end solutions — from data preprocessing and model training to deployment via <strong>Streamlit</strong> and clear, actionable visualizations.</p>
+            
+            <p>🎯 My projects often focus on practical applications in healthcare, finance, and process optimization.</p>
+            
+            <p>🔄 Beyond coding, I'm highly organized, communicate clearly, and take pride in creating well-documented, efficient workflows. I'm driven by curiosity, continuous learning, and the impact AI can make when applied thoughtfully.</p>
+            
+            <p>✨ Let's build something smart, scalable, and impactful!</p>
+        </div>
+    </div>
+</section>
             
             <div class="row mt-4">
                 <div class="col-md-6 animate-fade-left delay-2">
                     <div class="skill-item">
-                        <h5><i class="fas fa-code me-2"></i>Technical Expertise</h5>
+                        <h5><i class="fas fa-user-circle me-2"></i>About My Journey</h5>
+                        <p>I started my tech journey with a passion for problem-solving and data-driven solutions. Through self-learning and hands-on projects, I've developed expertise in:</p>
                         <ul>
-                            <li>Languages: Python, C, Java</li>
-                            <li>Libraries: Numpy, Pandas, Matplotlib, Seaborn, Scikit-learn</li>
-                            <li>Frameworks: Django, Flask, Bootstrap</li>
-                            <li>Tools: Git, GitHub, Conda</li>
+                            <li>Building end-to-end machine learning applications</li>
+                            <li>Creating interactive data visualizations</li>
+                            <li>Developing scalable web applications</li>
+                            <li>Implementing AI solutions for real-world challenges</li>
                         </ul>
                     </div>
                 </div>
@@ -941,8 +951,42 @@
 
             </div>
         </section>
-
         <!-- Skills Section -->
+        <style>
+            /* New styles for interactive tooltips on skill icons */
+            .skill-icon-wrapper {
+                position: relative;
+                display: inline-block;
+                margin: 5px;
+            }
+            .skill-icon-wrapper .skill-tooltip {
+                position: absolute;
+                bottom: -28px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--highlight-color);
+                color: #fff;
+                padding: 3px 8px;
+                border-radius: 4px;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s;
+                font-size: 0.75rem;
+                white-space: nowrap;
+            }
+            .skill-icon-wrapper:hover .skill-tooltip {
+                opacity: 1;
+            }
+            /* Extra stylish hover effect */
+            .skill-icon {
+                transition: transform 0.3s, filter 0.3s;
+                filter: grayscale(30%);
+            }
+            .skill-icon-wrapper:hover .skill-icon {
+                transform: scale(1.2);
+                filter: grayscale(0%);
+            }
+        </style>
         <section id="skills" class="section animate-fade-up">
             <h2 class="mb-4">Skills</h2>
             <div class="row">
@@ -950,12 +994,30 @@
                     <div class="skill-item">
                         <h5>Programming Languages & Databases</h5>
                         <div class="skill-icons">
-                            <img src="https://icon.icepanel.io/Technology/svg/Python.svg" alt="Python" class="skill-icon" title="Python">
-                            <img src="https://icon.icepanel.io/Technology/svg/C.svg" alt="C" class="skill-icon" title="C">
-                            <img src="https://icon.icepanel.io/Technology/svg/Java.svg" alt="Java" class="skill-icon" title="Java">
-                            <img src="https://icon.icepanel.io/Technology/png-shadow-512/Bash.png" alt="Bash" class="skill-icon" title="Bash">
-                            <img src="https://icon.icepanel.io/Technology/svg/MySQL.svg" alt="MySQL" class="skill-icon" title="MySQL">
-                            <img src="https://icon.icepanel.io/Technology/svg/PostgresSQL.svg" alt="PostgreSQL" class="skill-icon" title="PostgreSQL">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/Python.svg" alt="Python" class="skill-icon" title="Python">
+                                <span class="skill-tooltip">Python</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/C.svg" alt="C" class="skill-icon" title="C">
+                                <span class="skill-tooltip">C</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/Java.svg" alt="Java" class="skill-icon" title="Java">
+                                <span class="skill-tooltip">Java</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/png-shadow-512/Bash.png" alt="Bash" class="skill-icon" title="Bash">
+                                <span class="skill-tooltip">Bash</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/MySQL.svg" alt="MySQL" class="skill-icon" title="MySQL">
+                                <span class="skill-tooltip">MySQL</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/PostgresSQL.svg" alt="PostgreSQL" class="skill-icon" title="PostgreSQL">
+                                <span class="skill-tooltip">PostgreSQL</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -964,15 +1026,45 @@
                     <div class="skill-item">
                         <h5>Frameworks & Libraries</h5>
                         <div class="skill-icons">
-                            <img src="https://icon.icepanel.io/Technology/png-shadow-512/Django.png" alt="Django" class="skill-icon" title="Django">
-                            <img src="https://icon.icepanel.io/Technology/png-shadow-512/Flask.png" alt="Flask" class="skill-icon" title="Flask">
-                            <img src="https://icon.icepanel.io/Technology/svg/Bootstrap.svg" alt="Bootstrap" class="skill-icon" title="Bootstrap">
-                            <img src="https://icon.icepanel.io/Technology/svg/NumPy.svg" alt="NumPy" class="skill-icon" title="NumPy">
-                            <img src="https://icon.icepanel.io/Technology/png-shadow-512/Pandas.png" alt="Pandas" class="skill-icon" title="Pandas">
-                            <img src="https://icon.icepanel.io/Technology/svg/Matplotlib.svg" alt="Matplotlib" class="skill-icon" title="Matplotlib">
-                            <!-- <img src="https://icon.icepanel.io/Technology/svg/scikit-learn.svg" alt="Scikit-learn" class="skill-icon" title="Scikit-learn">
-                            <img src="https://icon.icepanel.io/Technology/svg/TensorFlow.svg" alt="TensorFlow" class="skill-icon" title="TensorFlow">
-                            <img src="https://icon.icepanel.io/Technology/svg/Keras.svg" alt="Keras" class="skill-icon" title="Keras"> -->
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/png-shadow-512/Django.png" alt="Django" class="skill-icon" title="Django">
+                                <span class="skill-tooltip">Django</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/png-shadow-512/Flask.png" alt="Flask" class="skill-icon" title="Flask">
+                                <span class="skill-tooltip">Flask</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/Bootstrap.svg" alt="Bootstrap" class="skill-icon" title="Bootstrap">
+                                <span class="skill-tooltip">Bootstrap</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/NumPy.svg" alt="NumPy" class="skill-icon" title="NumPy">
+                                <span class="skill-tooltip">NumPy</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/png-shadow-512/Pandas.png" alt="Pandas" class="skill-icon" title="Pandas">
+                                <span class="skill-tooltip">Pandas</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/Matplotlib.svg" alt="Matplotlib" class="skill-icon" title="Matplotlib">
+                                <span class="skill-tooltip">Matplotlib</span>
+                            </div>
+                            <!-- Uncomment below icons if needed in future -->
+                            <!--
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/scikit-learn.svg" alt="Scikit-learn" class="skill-icon" title="Scikit-learn">
+                                <span class="skill-tooltip">Scikit-learn</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/TensorFlow.svg" alt="TensorFlow" class="skill-icon" title="TensorFlow">
+                                <span class="skill-tooltip">TensorFlow</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/Keras.svg" alt="Keras" class="skill-icon" title="Keras">
+                                <span class="skill-tooltip">Keras</span>
+                            </div>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -981,14 +1073,38 @@
                     <div class="skill-item">
                         <h5>Tools & Technologies</h5>
                         <div class="skill-icons">
-                            <img src="https://icon.icepanel.io/Technology/svg/Git.svg" alt="Git" class="skill-icon" title="Git">
-                            <img src="https://icon.icepanel.io/Technology/svg/GitHub.svg" alt="GitHub" class="skill-icon" title="GitHub">
-                            <img src="https://icon.icepanel.io/Technology/svg/Docker.svg" alt="Docker" class="skill-icon" title="Docker">
-                            <img src="https://icon.icepanel.io/Technology/svg/Jenkins.svg" alt="Jenkins" class="skill-icon" title="Docker">
-                            <img src="https://icon.icepanel.io/Technology/svg/Jupyter.svg" alt="Jupyter" class="skill-icon" title="Jupyter">
-                            <img src="https://icon.icepanel.io/Technology/svg/Visual-Studio-Code-%28VS-Code%29.svg" alt="VS Code" class="skill-icon" title="VS Code">
-                            <img src="https://icon.icepanel.io/Technology/svg/Anaconda.svg" alt="Anaconda" class="skill-icon" title="VS Code">
-                            <img src="https://icon.icepanel.io/Technology/svg/PyCharm.svg" alt="PyCharm" class="skill-icon" title="VS Code">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/Git.svg" alt="Git" class="skill-icon" title="Git">
+                                <span class="skill-tooltip">Git</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/GitHub.svg" alt="GitHub" class="skill-icon" title="GitHub">
+                                <span class="skill-tooltip">GitHub</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/Docker.svg" alt="Docker" class="skill-icon" title="Docker">
+                                <span class="skill-tooltip">Docker</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/Jenkins.svg" alt="Jenkins" class="skill-icon" title="Jenkins">
+                                <span class="skill-tooltip">Jenkins</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/Jupyter.svg" alt="Jupyter" class="skill-icon" title="Jupyter">
+                                <span class="skill-tooltip">Jupyter</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/Visual-Studio-Code-%28VS-Code%29.svg" alt="VS Code" class="skill-icon" title="VS Code">
+                                <span class="skill-tooltip">VS Code</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/Anaconda.svg" alt="Anaconda" class="skill-icon" title="Anaconda">
+                                <span class="skill-tooltip">Anaconda</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/PyCharm.svg" alt="PyCharm" class="skill-icon" title="PyCharm">
+                                <span class="skill-tooltip">PyCharm</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -997,16 +1113,48 @@
                     <div class="skill-item">
                         <h5>Data Science & ML</h5>
                         <div class="skill-icons">
-                            <img src="https://icon.icepanel.io/Technology/svg/Ploty.svg" alt="Plotly" class="skill-icon" title="Plotly">
-                            <!-- <img src="https://images.seeklogo.com/logo-png/44/1/seaborn-logo-png_seeklogo-441844.png" alt="Seaborn" class="skill-icon" title="Seaborn"> -->
-                            <img src="https://icon.icepanel.io/Technology/svg/scikit-learn.svg" alt="Scikit-learn" class="skill-icon" title="Scikit-learn">
-                            <img src="https://icon.icepanel.io/Technology/svg/Jupyter.svg" alt="Jupyter" class="skill-icon" title="Jupyter">
-                            <img src="https://icon.icepanel.io/Technology/svg/Kaggle.svg" alt="Kaggle" class="skill-icon" title="Scikit-learn">
-                            <img src="https://icon.icepanel.io/Technology/svg/Streamlit.svg" alt="Streamlit" class="skill-icon" title="Streamlit">
-                            <img src="https://img.icons8.com/?size=100&id=3sGOUDo9nJ4k&format=png&color=000000" alt="Power-Bi" class="skill-icon" title="Power-Bi">
-                            <img src="https://icon.icepanel.io/Technology/svg/TensorFlow.svg" alt="TensorFlow" class="skill-icon" title="TensorFlow">
-                            <img src="https://icon.icepanel.io/Technology/svg/Keras.svg" alt="Keras" class="skill-icon" title="Keras">
-                            <img src="https://mlflow.org/img/mlflow-black.svg" alt="mlflow" class="skill-icon" title="mlflow">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/Ploty.svg" alt="Plotly" class="skill-icon" title="Plotly">
+                                <span class="skill-tooltip">Plotly</span>
+                            </div>
+                            <!--
+                            <div class="skill-icon-wrapper">
+                                <img src="https://images.seeklogo.com/logo-png/44/1/seaborn-logo-png_seeklogo-441844.png" alt="Seaborn" class="skill-icon" title="Seaborn">
+                                <span class="skill-tooltip">Seaborn</span>
+                            </div>
+                            -->
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/scikit-learn.svg" alt="Scikit-learn" class="skill-icon" title="Scikit-learn">
+                                <span class="skill-tooltip">Scikit-learn</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/Jupyter.svg" alt="Jupyter" class="skill-icon" title="Jupyter">
+                                <span class="skill-tooltip">Jupyter</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/Kaggle.svg" alt="Kaggle" class="skill-icon" title="Kaggle">
+                                <span class="skill-tooltip">Kaggle</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/Streamlit.svg" alt="Streamlit" class="skill-icon" title="Streamlit">
+                                <span class="skill-tooltip">Streamlit</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://img.icons8.com/?size=100&id=3sGOUDo9nJ4k&format=png&color=000000" alt="Power-Bi" class="skill-icon" title="Power-Bi">
+                                <span class="skill-tooltip">Power-Bi</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/TensorFlow.svg" alt="TensorFlow" class="skill-icon" title="TensorFlow">
+                                <span class="skill-tooltip">TensorFlow</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://icon.icepanel.io/Technology/svg/Keras.svg" alt="Keras" class="skill-icon" title="Keras">
+                                <span class="skill-tooltip">Keras</span>
+                            </div>
+                            <div class="skill-icon-wrapper">
+                                <img src="https://mlflow.org/img/mlflow-black.svg" alt="mlflow" class="skill-icon" title="mlflow">
+                                <span class="skill-tooltip">mlflow</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1049,27 +1197,38 @@
         <section id="contact" class="section animate-fade-up">
             <h2 class="mb-4">Contact</h2>
             <div class="row">
-                <div class="col-lg-6 animate-fade-left delay-2">
-                    <div class="contact-info">
-                        <h4>Get In Touch</h4>
-                        <p><i class="fas fa-envelope"></i> surajsah132@gmail.com</p>
-                        <p><i class="fas fa-phone"></i> +977-9815271537</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</p>
-                        
-                        <!-- <div class="social-icons mt-4"></div>
-                            <a href="https://linkedin.com/in/sahkanu34" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://github.com/sahkanu34" target="_blank"><i class="fab fa-github"></i></a>
-                        </div> -->
-                    </div>
+            <div class="col-lg-6 animate-fade-left delay-2">
+                <div class="contact-info">
+                <h4>Get In Touch</h4>
+                <p>
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:surajsah132@gmail.com">surajsah132@gmail.com</a>
+                </p>
+                <p>
+                    <i class="fas fa-phone-alt"></i>
+                    <a href="tel:+9779815271537">+977-9815271537</a>
+                </p>
+                <p>
+                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/9779815271537" target="_blank">Chat on WhatsApp</a>
+                </p>
+                <p>
+                    <i class="fas fa-map-marker-alt"></i>
+                    Kathmandu, Nepal
+                </p>
+                <div class="social-icons mt-4" style="justify-content: flex-start;">
+                    <a href="https://linkedin.com/in/sahkanu34" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/sahkanu34" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://mail.google.com/mail/?view=cm&to=surajsah132@gmail.com" target="_blank" title="Gmail">
+                    <i class="fas fa-envelope-open-text"></i>
+                    </a>
                 </div>
-                
-                <div class="col-lg-6 animate-fade-right delay-3">
-                    <div class="contact-info">
-                        <h4>Let's Collaborate</h4>
-                        <p>I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.</p>
-                        <p>Feel free to reach out through any of the contact methods listed, and I'll get back to you as soon as possible.</p>
-                    </div>
                 </div>
+            </div>
             </div>
         </section>
 
